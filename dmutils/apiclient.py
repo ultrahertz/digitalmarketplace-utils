@@ -83,6 +83,10 @@ class SearchAPIClient(BaseAPIClient):
 
         return self._put(url, data=data)
 
+    def search(self, payload):
+        url = self._url("/search")
+        return self._get(url, payload)
+
     def _convert_service(self, service_id, service, supplier_name):
         data = {k: service[k] for k in self.FIELDS if k in service}
         data['supplierName'] = supplier_name
